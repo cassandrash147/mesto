@@ -10,3 +10,10 @@
   background-repeat: no-repeat;
   
   }
+
+  .lead__add_buttom:hover{
+    opacity: 0.6;
+    transition: opacity 0.2s linear;
+    cursor: pointer;
+  
+  }
