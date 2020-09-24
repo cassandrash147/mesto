@@ -10,12 +10,12 @@ font-style: inherit;
 
 font-weight: normal;
   font-size: 18px;
-  line-height: 1.22;
+  line-height: 2.79;
   text-align: center;
   
   color: #FFFFFF;
   margin: 0;
-
+border: 0;
 }
 
 .popup__save-bottom:hover{
@@ -28,6 +28,6 @@ font-weight: normal;
 @media screen and (max-width: 468px) {
   .popup__save-bottom {
     font-size: 14px;
-line-height: 17px;
+line-height: 3.28;
   }
 }  
