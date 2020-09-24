@@ -1,6 +1,6 @@
 .page {
   margin: auto;
-  width: 100%;
+  max-width: 882px;
 
   padding-top: 45px;
   
@@ -13,6 +13,10 @@
 -ms-text-size-adjust: 100%;
 -moz-text-size-adjust: 100%;
   text-rendering:optimizeLegibility;
-  }
 
   
+  }
+
+  /* div, section, article, h1, p {
+    border: 1px solid red;
+  } */

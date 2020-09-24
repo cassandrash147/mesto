@@ -3,17 +3,29 @@
 @import url(../blocks/body/body.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/main/main.css);
-@import url(../blocks/header/header.css);
 @import url(../blocks/main/main.css);
-@import url(../blocks/footer/footer.css);
+
+@import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
-@import url(../blocks/profile/profile.css);
-@import url(../blocks/profile/_avatar/profile__avatar.css);
-@import url(../blocks/profile/__info/profile__info.css);
-@import url(../blocks/profile/__name/profile__name.css);
-@import url(../blocks/profile/__proffesion/profile__proffesion.css);
-@import url(../blocks/profile/__edit_buttom/profile__edit_buttom.css);
-@import url(../blocks/profile/__add_buttom/profile__add_buttom.css);
+
+@import url(../blocks/lead/lead.css);
+@import url(../blocks/lead/__add_buttom/lead__add_buttom.css);
+@import url(../blocks/lead/__profile/lead__profile.css);
+@import url(../blocks/lead/__avatar/lead__avatar.css);
+@import url(../blocks/lead/__title/lead__title.css);
+@import url(../blocks/lead/__info/lead__info.css);
+@import url(../blocks/lead/__name/lead__name.css);
+@import url(../blocks/lead/__edit_buttom/lead__edit_buttom.css);
+@import url(../blocks/lead/__proffesion/lead__proffesion.css);
+
+
 @import url(../blocks/elements/elements.css);
+@import url(../blocks/element/element.css);
+@import url(../blocks/element/__photo/element__photo.css);
+@import url(../blocks/element/__title/element__title.css);
+@import url(../blocks/element/__heart/element__heart.css);
 @import url(../blocks);
-@import url(../blocks);
+
+
+
+@import url(../blocks/footer/footer.css);
