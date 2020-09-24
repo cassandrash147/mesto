@@ -1,0 +1,16 @@
+.popup__save-bottom-text{
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.22;
+  text-align: center;
+  
+  color: #FFFFFF;
+  margin: 0;
+}
+
+@media screen and (max-width: 468px) {
+  .popup__save-bottom-text {
+    font-size: 14px;
+line-height: 17px;
+  }
+}  
