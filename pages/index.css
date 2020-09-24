@@ -40,5 +40,6 @@
 @import url(../blocks/popup/__name/popup__name.css);
 @import url(../blocks/popup/__profecion/popup__profecion.css);
 @import url(../blocks/popup/__save-bottom/popup__save-bottom.css);
-@import url(../blocks/popup/__save-bottom-text/popup__save-bottom-text.css);
+
 @import url(../blocks/popup/__close-bottom/popup__close-bottom.css);
+@import url(../blocks/popup/_display/popup_display_none.css);
