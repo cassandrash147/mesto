@@ -5,3 +5,13 @@
   color: #FFFFFF;
  margin: 0;
 }
+
+@media screen and (max-width: 530px) {
+  .lead__name {
+    align-self: center;
+    justify-self: center;
+    
+    font-size: 27px;
+line-height: 1.4;
+  }
+}  

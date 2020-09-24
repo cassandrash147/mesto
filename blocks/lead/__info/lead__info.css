@@ -4,3 +4,12 @@
   margin-bottom: 16px;
   margin-top: 0;
 }
+
+@media screen and (max-width: 530px) {
+  .lead__info {
+    margin-top: 10.5px;
+    margin-bottom: 14px;
+    align-items: center;
+    
+  }
+}  

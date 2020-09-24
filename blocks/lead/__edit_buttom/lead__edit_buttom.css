@@ -14,5 +14,15 @@
   opacity: 0.6;
   transition: opacity 0.2s linear;
   cursor: pointer;
+  
 
 }
+
+@media screen and (max-width: 530px) {
+  .lead__edit_buttom {
+    margin-left: 6.25px;
+    width: 18px;
+  height: 18px;
+    
+  }
+}  
