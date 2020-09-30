@@ -15,55 +15,55 @@
     <main class="main">
       <section class="lead">
         <div class="lead__profile">
-          <div class="lead__avatar"></div>
+          <div class="lead__avatar" style = "background-image: url(./images/avatar.png);"></div>
           <div class="lead__title">
             <div class="lead__info">
               <h1 class="lead__name">Жак-Ив Кусто</h1>
-              <div class="lead__edit_buttom"></div>
+              <button type="submit" class="lead__edit"></button>
             </div>
             <p class="lead__proffesion">Исследователь океана</p>
           </div>
                 
         </div>
       
-        <div class="lead__add_buttom"></div>
+        <button type="submit" class="lead__add"></button>
       </section>
 
       <section class="elements">
         <article class="element">
-          <img class="element__photo" src="./images/kirill-pershin-1088404-unsplash.png" alt="Крепость в горах">
+          <div class="element__photo" style = "background-image: url(./images/kirill-pershin-1088404-unsplash.png);"></div>
             <div class="element__about"><h2 class="element__title">Карачаевск</h2>
-            <div class="element__heart"></div>
+            <button type="submit" class="element__heart"></button>
           </div>
         </article>
         <article class="element">
-          <img class="element__photo" src="./images/elbrus.png" alt="Крепость в горах">
+          <div class="element__photo" style = "background-image: url(./images/elbrus.png);"></div>
             <div class="element__about"><h2 class="element__title">Гора Эльбрус</h2>
-            <div class="element__heart"></div>
+            <button type="submit" class="element__heart"></button>
           </div>
         </article>
         <article class="element">
-          <img class="element__photo" src="./images/dombai.png" alt="Крепость в горах">
+          <div class="element__photo" style = "background-image: url(./images/dombai.png);"></div>
             <div class="element__about"><h2 class="element__title">Домбай</h2>
-            <div class="element__heart"></div>
+            <button type="submit" class="element__heart"></button>
           </div>
         </article>
         <article class="element">
-          <img class="element__photo" src="./images/elbrus.png" alt="Крепость в горах">
+          <div class="element__photo" style = "background-image: url(./images/elbrus.png);"></div>
             <div class="element__about"><h2 class="element__title">Гора Эльбрус</h2>
-            <div class="element__heart"></div>
+            <button type="submit" class="element__heart"></button>
           </div>
         </article>
         <article class="element">
-          <img class="element__photo" src="./images/dombai.png" alt="Крепость в горах">
+          <div class="element__photo" style = "background-image: url(./images/dombai.png);"></div>
             <div class="element__about"><h2 class="element__title">Домбай</h2>
-            <div class="element__heart"></div>
+            <button type="submit" class="element__heart"></button>
           </div>
         </article>
         <article class="element">
-          <img class="element__photo" src="./images/kirill-pershin-1088404-unsplash.png" alt="Крепость в горах">
+          <div class="element__photo" style = "background-image: url(./images/kirill-pershin-1088404-unsplash.png);"></div>
             <div class="element__about"><h2 class="element__title">Карачаево-Черкесия</h2>
-            <div class="element__heart"></div>
+            <button type="submit" class="element__heart"></button>
           </div>
         </article>
         
@@ -75,20 +75,20 @@
     </main>  
   
     <footer class="footer">
-  <p class="footer__copyrigth">&copy; 2020 Mesto Russia</p>
+  <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <div class="popup popup_display_none">
+    <div class="popup popup_disabled">
       <form class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <fieldset class="popup__form">
-          <input type="text" class="popup__name" placeholder="Имя">
-          <input type="text" class="popup__profecion" placeholder="О себе">
+          <input type="text" class="popup__input popup__input-type-name" placeholder="Имя">
+          <input type="text" class="popup__input popup__input-type-profession" placeholder="О себе">
         </fieldset>
-        <input type="submit" class="popup__save-bottom">
-          <p class="popup__save-bottom-text" value="Сохранить"></p>
+        <input type="submit" class="popup__save" value="Сохранить">
+          
         
-        <div class="popup__close-bottom"></div>  
+        <button type="button" class="popup__close"></button >  
       </form>
       
     </div>
