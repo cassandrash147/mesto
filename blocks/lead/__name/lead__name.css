@@ -1,9 +1,14 @@
 .lead__name{
   font-weight: 500;
   font-size: 42px;
-  line-height: 1.33px;
+  line-height: 1.33;
   color: #FFFFFF;
  margin: 0;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ overflow: hidden;
+ max-width: 500px;
+
 }
 
 @media screen and (max-width: 530px) {

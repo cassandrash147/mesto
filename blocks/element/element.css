@@ -1,6 +1,6 @@
 .element{
   
-  
+  overflow: hidden;
   background: #FFFFFF;
   border-radius: 10px;
 }
