@@ -11,19 +11,19 @@ let nameInput = document.querySelector('.popup__name');
 let jobInput = document.querySelector('.popup__profecion');
 let formElement = popup.querySelector('.popup__container');
 
-function OpenClosePopup() {
+function ClosePopup() {
   popup.classList.toggle('popup_display_none')
 }
 
 function EditProfile() {
-  OpenClosePopup
+  popup.classList.toggle('popup_display_none')
   nameInput.value = profileName.textContent;
   jobInput.value = profileProffesion.textContent;
 }
 
 editButtom.addEventListener('click', EditProfile);
 
-closeBottom.addEventListener('click', OpenClosePopup);
+closeBottom.addEventListener('click', ClosePopup);
 
 
 
@@ -46,7 +46,7 @@ function formSubmitHandler (evt) {
     // Вставьте новые значения с помощью textContent
     profileName.textContent = nameInput.value;
     profileProffesion.textContent = jobInput.value;
-    OpenClosePopup
+    ClosePopup()
 }
 
 // Прикрепляем обработчик к форме:
