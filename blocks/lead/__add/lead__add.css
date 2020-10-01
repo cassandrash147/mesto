@@ -8,7 +8,9 @@
   background-position: center;
   background-size: 22px 22px;
   background-repeat: no-repeat;
-  background-color: black;
+  background-color: transparent;
+
+  ;
   transition: opacity 0.2s linear;
   }
 

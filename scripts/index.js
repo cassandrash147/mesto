@@ -9,19 +9,20 @@ let closeButtom = document.querySelector('.popup__close');
 let profileName = profile.querySelector('.lead__name');
 let profileProffesion = profile.querySelector('.lead__proffesion');
 
-let nameInput = document.querySelector('.popup__input-type-name');
-let jobInput = document.querySelector('.popup__input-type-profession');
+let nameInput = popup.querySelector('.popup__input_type_name');
+let jobInput = popup.querySelector('.popup__input_type_profession');
+
 
 let formElement = popup.querySelector('.popup__container');
 
-function OpenClosePopup() {
-  popup.classList.toggle('popup_disabled')
+function togglePopup() {
+  popup.classList.toggle('popup_disabled');
 }
 
-function EditProfile() {
+function openPopupProfile() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileProffesion.textContent;
-  OpenClosePopup()
+  togglePopup();
 }
 
 
@@ -30,11 +31,11 @@ function formSubmitHandler (evt) {
     evt.preventDefault(); 
     profileName.textContent = nameInput.value;
     profileProffesion.textContent = jobInput.value;
-    OpenClosePopup()
+    togglePopup();
 }
 
-editButtom.addEventListener('click', EditProfile );
-closeButtom.addEventListener('click', OpenClosePopup);
+editButtom.addEventListener('click', openPopupProfile );
+closeButtom.addEventListener('click', togglePopup);
 formElement.addEventListener('submit', formSubmitHandler);
 
 

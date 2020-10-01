@@ -10,14 +10,14 @@
   font-family: inherit;  
   font-weight: normal;
 font-size: 14px;
-line-height: 1.21; 
-margin-top: 29.74px;
-margin-bottom: 48px;
+line-height: 17px; 
+margin-bottom: 29.74px;
+vertical-align: super;
 }
 
 @media screen and (max-width: 468px) {
   .popup__profecion {
-    margin-top: 30px;
-margin-bottom: 45px;
+    
+margin-bottom: 30px;
   }
 }  
