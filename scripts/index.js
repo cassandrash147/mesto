@@ -10,15 +10,10 @@ const closeButtomPlace = popupPlace.querySelector('.popup__close');
 const createButtom = popupPlace.querySelector('.popup__save');
 const savePlaceButtom = popupPlace.querySelector('.popup__save');
 const popupPhoto = document.querySelector('.popup_type_photo');
-
-
 const profileName = profile.querySelector('.lead__name');
 const profileProffesion = profile.querySelector('.lead__proffesion');
-
 const nameInput = popupProfile.querySelector('.popup__input_type_name');
 const jobInput = popupProfile.querySelector('.popup__input_type_profession');
-
-
 const formElement = popupProfile.querySelector('.popup__container');
 const placeContainer = document.querySelector('.elements');
 const heart = document.querySelectorAll('.element__heart');
