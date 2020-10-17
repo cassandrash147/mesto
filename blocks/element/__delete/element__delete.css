@@ -1,6 +1,8 @@
-.element__heart{
-  width: 20.76px;
-  height: 18.13px;
+.element__delete{
+  box-sizing: border-box;
+  padding: 0;
+  width: 18px;
+  height: 19.3px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -8,17 +10,17 @@
   outline: none;
   background-color: transparent;
   transition: opacity 0.2s linear;
-  background-image: url(../../../images/heart.svg);
+  background-image: url(../../../images/Trash.svg);
+  z-index: 2;
+  position: absolute;
+  top: 18px;
+  right: 15px;
 }
 
-.element__heart:hover{
+.element__delete:hover{
   opacity: 0.6;
  
   cursor: pointer;
 
 
-}
-
-.element__heart_active{
-  background-image: url(../../../images/heart\ black.svg);
 }

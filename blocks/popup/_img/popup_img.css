@@ -1,0 +1,13 @@
+.popup_img{
+  max-height: 75vh;
+  max-width: 75vw;  
+  
+  
+}
+
+@media screen and (max-width: 660px) {
+  .popup_img{
+    max-height: 53vh;
+    
+  }
+}   
