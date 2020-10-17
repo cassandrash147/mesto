@@ -42,13 +42,13 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__save/popup__save.css);
 
-@import url(../blocks/popup/_type_photo/popup_type_photo.css);
+@import url(../blocks/popup/_type/popup_type_photo.css);
 
 @import url(../blocks/popup/_img-title/popup_img-title.css);
 @import url(../blocks/popup/_img/popup_img.css);
-@import url(../blocks/popup/popup__clos.css);
 
-@import url(../blocks/popup/__close/popup__close.css);
+
+
 @import url(../blocks/popup/_disabled/popup_disabled.css);
 
 
