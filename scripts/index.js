@@ -76,10 +76,14 @@ const getCard = (data) => {
   
   likeButton.addEventListener('click', likeCard);
   deleteButton.addEventListener('click', deleteCard);
+  
   openFullSizePhotoButton.addEventListener('click', function() {
+
+    fullsizePhotoTitle.textContent = photoTitle.textContent;
     fullsizePhoto.src = openFullSizePhotoButton.src;
-    fullsizePhotoTitle.textContent = fullsizePhoto.textContent;
+    
     togglePopup(popupPhoto);
+    console.log(fullsizePhoto.textContent)
   });
   return card;
 };
