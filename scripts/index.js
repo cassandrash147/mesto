@@ -82,19 +82,19 @@ const getCard = (data) => {
     fullsizePhotoTitle.textContent = photoTitle.textContent;
     fullsizePhoto.src = openFullSizePhotoButton.src;
     
-    togglePopup(popupPhoto);
-    console.log(fullsizePhoto.textContent)
+    openPopup(popupPhoto);
   });
   return card;
 };
 
 
-
-
-
-function togglePopup(item) {
-  item.classList.toggle('popup_disabled');
+function closePopup(item) {
+  item.classList.add('popup_disabled');
 }
+function openPopup(item) {
+  item.classList.remove('popup_disabled');
+}
+
 
 const bindHandlers = () => {
   formElementPlace.addEventListener('submit', (evt) => {
@@ -103,37 +103,42 @@ const bindHandlers = () => {
       name: placeInput.value,
       link: urlInput.value
     });
-
     placeContainer.prepend(newCard)
-
     placeInput.value = '';
     urlInput.value = '';
-    togglePopup(popupPlace);
+    closePopup(popupPlace);
   });
 
   addPlace.addEventListener('click', function() {
-    togglePopup(popupPlace);
+    openPopup(popupPlace);
   });
-  closeButtomPlace.addEventListener('click', function() {
-    togglePopup(popupPlace);
+
+  
+const popups = Array.from(document.querySelectorAll('.popup'))
+
+
+popups.forEach((popup) => {
+  popup.addEventListener('click', function(evt) {
+    if(!evt.target.classList.contains('popup__container')&&!evt.target.classList.contains('popup__input')&&!evt.target.classList.contains('popup__title')&&!evt.target.classList.contains('popup__form')&&!evt.target.classList.contains('popup__save')){closePopup(popup);}
   });
+  document.addEventListener('keydown', function(evt) {
+    if(evt.key == "Escape"){closePopup(popup);}
+  });
+});
+
   editButtom.addEventListener('click', function() {
-    togglePopup(popupProfile);
+    openPopup(popupProfile);
   });
-  closeButtom.addEventListener('click', function() {
-    togglePopup(popupProfile);
-  });
+  
   formElement.addEventListener('submit', formSubmitHandler);
-  closeButtomPhoto.addEventListener('click', function() {
-    togglePopup(popupPhoto);
-  });
+  
 };
 
 function formSubmitHandler (evt) {
   evt.preventDefault(); 
   profileName.textContent = nameInput.value;
   profileProffesion.textContent = jobInput.value;
-  togglePopup(popupProfile);
+  closePopup(popupProfile);
 }
 
 
