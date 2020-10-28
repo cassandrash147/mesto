@@ -46,12 +46,14 @@ const fullsizePhoto = document.querySelector('.popup_img');
 const fullsizePhotoTitle = document.querySelector('.popup_img-title');
 const popupPhoto = document.querySelector('.popup_type_photo');
 const closeButtomPhoto = popupPhoto.querySelector('.popup__close');
-
+nameInput.value = profileName.textContent;
+jobInput.value = profileProffesion.textContent;
 
 const renderCards = () => {
   const cards = initialCards.map(element => getCard(element));
 
   placeContainer.prepend(...cards)
+  
 };
 
 const deleteCard = (event) => {
@@ -127,6 +129,7 @@ popups.forEach((popup) => {
 });
 
   editButtom.addEventListener('click', function() {
+    
     openPopup(popupProfile);
   });
   
