@@ -129,7 +129,8 @@ popups.forEach((popup) => {
 });
 
   editButtom.addEventListener('click', function() {
-    
+    nameInput.value = profileName.textContent;
+jobInput.value = profileProffesion.textContent;
     openPopup(popupProfile);
   });
   
