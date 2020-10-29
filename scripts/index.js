@@ -48,6 +48,7 @@ const popupPhoto = document.querySelector('.popup_type_photo');
 const closeButtomPhoto = popupPhoto.querySelector('.popup__close');
 nameInput.value = profileName.textContent;
 jobInput.value = profileProffesion.textContent;
+const Escape = "Escape"; 
 
 const renderCards = () => {
   const cards = initialCards.map(element => getCard(element));
@@ -121,10 +122,11 @@ const popups = Array.from(document.querySelectorAll('.popup'))
 
 popups.forEach((popup) => {
   popup.addEventListener('click', function(evt) {
-    if(!evt.target.classList.contains('popup__container')&&!evt.target.classList.contains('popup__input')&&!evt.target.classList.contains('popup__title')&&!evt.target.classList.contains('popup__form')&&!evt.target.classList.contains('popup__save')){closePopup(popup);}
+    if((evt.target.classList.contains('popup')) || (evt.target.classList.contains('popup__close'))){ closePopup(popup);}
   });
   document.addEventListener('keydown', function(evt) {
-    if(evt.key == "Escape"){closePopup(popup);}
+    
+    if(evt.key == Escape){closePopup(popup);}
   });
 });
 

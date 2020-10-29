@@ -1,4 +1,7 @@
 
+const formsForValidation = ['place', 'profile']
+const forms = Array.from((document.querySelectorAll('.popup__container')));
+
 
 const hideError = (form, input) =>{
 const errorElement = form.querySelector(`#${input.id}-error`);
@@ -57,22 +60,31 @@ const toggleButtonState = (form, buttonElement) => {
 
 
 const enableValidation = () => {
-  const forms = Array.from((document.querySelectorAll('.popup__container')));
+  
   
   forms.forEach((form) => {
-    form.addEventListener( 'submit', (evt) => {
+    if(formNeedValidation(form)){console.log('+');
+      form.addEventListener( 'submit', (evt) => {
+      
       evt.preventDefault()
-    });
+      
+    })
     setAddEventListener(form);
+    ;}
     
-      
-      
-      
   });
-};
+   
+  };
 
+  const formNeedValidation = (form) =>
+  { 
+    
+    
+    return formsForValidation.includes(form.getAttribute('name'));
+  };
+    
+   
+  enableValidation();
+  
 
-
-
-enableValidation();
 
