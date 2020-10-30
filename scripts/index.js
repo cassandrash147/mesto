@@ -93,7 +93,7 @@ const getCard = (data) => {
 
 function closePopup(item) {
   item.classList.add('popup_disabled');
-  removeTextErrors(item);
+  removeTextErrors(item, formsForValidation);
 };
 
 function openPopup(item) {

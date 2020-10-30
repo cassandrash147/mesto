@@ -73,22 +73,12 @@ showError(form, input, inputErrorClass, errorClass)
 };
 
 
- 
-
-
-
-
-
-
-
-  
-
-const removeTextErrors = (item, inputSelector) =>
+const removeTextErrors = (item, validationConfiguration) =>
 {
-  const inputElements = Array.from(item.querySelectorAll(inputSelector));
+  const inputElements = Array.from(item.querySelectorAll(`${validationConfiguration.inputSelector}`));
     inputElements.forEach((inputElement) => {
     inputElement.value = '';
-    hideError(item, inputElement)
+    hideError(item, inputElement, validationConfiguration.inputErrorClass)
   });
 };
 
