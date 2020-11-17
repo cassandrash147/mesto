@@ -1,5 +1,5 @@
 import {fullsizePhoto, fullsizePhotoTitle, popupPhoto} from './data.js';
-import {openPopup} from './index.js';
+import {openPopup} from './utils.js';
 
 export class Card {
 
@@ -21,11 +21,11 @@ export class Card {
   }
 
   _likeCard = (event) => {
-    event.target.classList.toggle('element__heart_active');
+    this._element.querySelector('.element__heart').classList.toggle('element__heart_active');
   };
 
-  _deleteCard = (event) => {
-    event.target.closest('.element').remove();
+  _deleteCard = () => {
+    this._element.remove();
   };
 
   
@@ -40,7 +40,7 @@ export class Card {
 
       fullsizePhotoTitle.textContent = defaulttitle;
       fullsizePhoto.src = defaultPhoto;
-      
+      fullsizePhoto.alt = defaulttitle;
       openPopup(popupPhoto);
     });
   };
@@ -50,8 +50,10 @@ export class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._element.querySelector('.element__photo').style.backgroundImage = `url(${this._image})`;
+    this._elementPhoto = this._element.querySelector('.element__photo')
+    this._elementPhoto.src = this._image;
     this._element.querySelector('.element__title').textContent = this._title;
+    this._elementPhoto.alt = this._title;
     this._setEventListeners();
     return this._element;
   }

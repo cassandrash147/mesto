@@ -9,8 +9,8 @@
   
 align-items:center;
 justify-content:center;
-visibility: visible;
-  opacity: 1;
+visibility: hidden;
+  opacity: 0;
   transition: visibility 0s, opacity 0.3s linear;
 
 /* display: none; */

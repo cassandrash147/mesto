@@ -1,10 +1,12 @@
 import {FormsForValidation} from './data.js';
 
+
 export class FormValidator {
 
   constructor(config, formSelector) {
     this._config = config;  
     this._formSelector = formSelector;
+    this._form = document.querySelector(this._formSelector);
   }
 
   _hideError = (form, input, inputErrorClass) =>{
@@ -59,7 +61,7 @@ export class FormValidator {
 
   enableValidation = () => {
       
-    const forms = Array.from((document.querySelectorAll(`${this._config.formSelector}`)));
+    const forms = Array.from((document.querySelectorAll(`${this._config.formsSelector}`)));
   
     forms.forEach((form) => {
       
@@ -71,31 +73,18 @@ export class FormValidator {
     });
   };
 
-  removeTextErrors = (item) =>
-  {
-    const inputElements = Array.from(item.querySelectorAll(`${this._config.inputSelector}`));
-      inputElements.forEach((inputElement) => {
-      inputElement.value = '';
-      this._hideError(item, inputElement, this._config.inputErrorClass)
-    });
-  };  
-
-}  
-
-const forms = Array.from((document.querySelectorAll(`.popup__container`)));
-
-const renderElements = () => {
-  
-  forms.forEach((form) => {
+  removeTextErrors = () => 
+  { 
+    const inputElements = Array.from(this._form.querySelectorAll(`${this._config.inputSelector}`)); 
     
-     new FormValidator(FormsForValidation, form).enableValidation()
-      
-      
-    
-  });
-};
+      inputElements.forEach((inputElement) => { 
+      inputElement.value = ''; 
+      this._hideError(this._form, inputElement, this._config.inputErrorClass) 
+    }); 
+  };   
+ 
+}   
 
 
-renderElements()
 
 
