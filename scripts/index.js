@@ -49,14 +49,14 @@ const bindHandlers = () => {
     const generateCard =  newCard.generateCard();
     placeContainer.prepend(generateCard);
     
-    urlInput.value = '';
+    
     closePopup(popupPlace);
   });
 
   addPlace.addEventListener('click', function() {
     openPopup(popupPlace);
     formNewPlaceValidator.removeTextErrors()
-
+    formNewPlaceValidator.disableButton()
   });
 
   
@@ -74,6 +74,7 @@ popups.forEach((popup) => {
     formEditProfileValidator.removeTextErrors()
     nameInput.value = profileName.textContent;
 jobInput.value = profileProffesion.textContent;
+formEditProfileValidator.disableButton()
     openPopup(popupProfile);
     
   });
