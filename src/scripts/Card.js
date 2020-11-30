@@ -1,12 +1,13 @@
-import {fullsizePhoto, fullsizePhotoTitle, popupPhoto} from './data.js';
-import {openPopup} from './utils.js';
+
+import {PopupWithImage} from './PopupWithImage.js';
 
 export class Card {
 
-  constructor(name, link, cardSelector) {
+  constructor(name, link, cardSelector, {handleCardClick}) {
     this._title = name;  
     this._image = link;
     this._cardSelector = cardSelector;
+    this.handleCardClick = handleCardClick
   }
 
   _getTemplate() {
@@ -20,29 +21,22 @@ export class Card {
 
   }
 
-  _likeCard = (event) => {
+  _likeCard() {
     this._element.querySelector('.element__heart').classList.toggle('element__heart_active');
   };
 
-  _deleteCard = () => {
+  _deleteCard() {
     this._element.remove();
   };
 
   
 
   _setEventListeners() {
-    const defaultPhoto = this._image
-    const defaulttitle = this._title
+    
    
-    this._element.querySelector('.element__heart').addEventListener('click', this._likeCard);
-    this._element.querySelector('.element__delete').addEventListener('click', this._deleteCard);
-    this._element.querySelector('.element__photo').addEventListener('click', function() {
-
-      fullsizePhotoTitle.textContent = defaulttitle;
-      fullsizePhoto.src = defaultPhoto;
-      fullsizePhoto.alt = defaulttitle;
-      openPopup(popupPhoto);
-    });
+    this._element.querySelector('.element__heart').addEventListener('click', this._likeCard.bind(this));
+    this._element.querySelector('.element__delete').addEventListener('click', this._deleteCard.bind(this));
+    this._element.querySelector('.element__photo').addEventListener('click', () => this.handleCardClick(this._image, this._title))
   };
 
   

@@ -11,19 +11,19 @@ export class FormValidator {
     this._buttonElement = this._form.querySelector(`${this._config.submitButtonSelector}`);
   }
 
-  _hideError = (form, input, inputErrorClass) =>{
+  _hideError(form, input, inputErrorClass) {
     const errorElement = form.querySelector(`#${input.id}-error`);
     errorElement.textContent = '';
     input.classList.remove(`${inputErrorClass}`)
   };
   
-  _showError = (form, input, inputErrorClass) =>{
+  _showError(form, input, inputErrorClass) {
     const errorElement = form.querySelector(`#${input.id}-error`);
     errorElement.textContent = input.validationMessage;
     input.classList.add(`${inputErrorClass}`)
   };
 
-  _checkInputValidity = (form, input, inputErrorClass) => {
+  _checkInputValidity(form, input, inputErrorClass) {
     if(input.checkValidity()){ 
       this._hideError(form, input, inputErrorClass)
     }else{
@@ -31,7 +31,7 @@ export class FormValidator {
     }
     };
 
-    disableButton = () => {
+    disableButton() {
   
       this._buttonElement.classList.add(`${this._inactiveButtonClass}`);
       this._buttonElement.disabled = true;
@@ -39,7 +39,7 @@ export class FormValidator {
   };
 
   
-    _toggleButtonState = (form) => {
+    _toggleButtonState(form) {
   
     if(form.checkValidity()){
       this._buttonElement.classList.remove(`${this._inactiveButtonClass}`);
@@ -53,7 +53,7 @@ export class FormValidator {
 
   
 
-  _setAddEventListener = (form, inputSelector, submitButtonSelector, inputErrorClass) => {
+  _setAddEventListener(form, inputSelector, submitButtonSelector, inputErrorClass) {
 
     const inputElements = Array.from((form.querySelectorAll(`${inputSelector}`)));
     
@@ -71,7 +71,7 @@ export class FormValidator {
     this._toggleButtonState(form);
   };
 
-  enableValidation = () => {
+  enableValidation() {
       
     const forms = Array.from((document.querySelectorAll(`${this._config.formsSelector}`)));
   
@@ -85,8 +85,7 @@ export class FormValidator {
     });
   };
 
-  removeTextErrors = () => 
-  { 
+  removeTextErrors() { 
     const inputElements = Array.from(this._form.querySelectorAll(`${this._config.inputSelector}`)); 
     
       inputElements.forEach((inputElement) => { 
