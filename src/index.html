@@ -36,16 +36,7 @@
           </section>
     
           <section class="elements">
-            <template id="element-template">
-              <article class="element">
-                  <img class="element__photo" alt="" src=""> 
-                  
-                  <button type="button" class="element__delete"></button>
-                  <div class="element__about"><h2 class="element__title"></h2>
-                  <button type="button" class="element__heart"></button>
-                </div>
-              </article>
-            </template>
+            
             
           </section>
     
@@ -56,6 +47,17 @@
     <footer class="footer">
   <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+
+    <template id="element-template">
+      <article class="element">
+          <img class="element__photo" alt="" src=""> 
+          
+          <button type="button" class="element__delete"></button>
+          <div class="element__about"><h2 class="element__title"></h2>
+          <button type="button" class="element__heart"></button>
+        </div>
+      </article>
+    </template>
 
     <div class="popup popup_type_profile">
       <form class="popup__container popup__container_type_profile" name="profile">
@@ -77,8 +79,8 @@
         <fieldset class="popup__form">
           <input autocomplete="off" type="text" id="place" class="popup__input popup__input_type_place" placeholder="Название" name="name" required minlength="2" maxlength="30">
           <span id="place-error" class="popup__error"></span>
-          <input type="url" id="place-url" class="popup__input popup__input_type_image" placeholder="Ссылка на картинку" name="proffesion" required minlength="0"> 
-          <span id="place-url-error" class="popup__error"></span>
+          <input type="url" id="place_url" class="popup__input popup__input_type_image" placeholder="Ссылка на картинку" name="proffesion" required minlength="0"> 
+          <span id="place_url-error" class="popup__error"></span>
         </fieldset>
         <button type="submit" class="popup__save">Создать</button >  
         <button type="button" class="popup__close"></button >  

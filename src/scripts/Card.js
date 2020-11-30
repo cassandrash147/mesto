@@ -3,7 +3,7 @@ import {PopupWithImage} from './PopupWithImage.js';
 
 export class Card {
 
-  constructor(name, link, cardSelector, {handleCardClick}) {
+  constructor(name, link, cardSelector, handleCardClick) {
     this._title = name;  
     this._image = link;
     this._cardSelector = cardSelector;
@@ -27,6 +27,7 @@ export class Card {
 
   _deleteCard() {
     this._element.remove();
+    this._element = null
   };
 
   

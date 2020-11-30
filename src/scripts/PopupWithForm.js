@@ -7,32 +7,46 @@ export class PopupWithForm extends Popup {
     this.handleFormSubmit = handleFormSubmit;
     
     this._handleEscClose = this._handleEscClose.bind(this)
-    this._formElement = this._popup.querySelector('.popup__container');
+    this._form = this._popup.querySelector('.popup__container');
+    this._formInputs = Array.from(this._popup.querySelectorAll('.popup__input'));
+  
   }
 
+  getInput(){
+    
+    
+    const inputList = {};
+    this._formInputs.forEach(item => {
+      inputList[item.id] = item;
+  })
+  
+    return inputList
+  }
+
+
   _getInputValues(){
-    const formInputs = Array.from(this._popup.querySelectorAll('.popup__input'))
-    return formInputs
+    
+    
+    const inputValues = {};
+    this._formInputs.forEach(item => {
+      inputValues[item.id] = item.value;
+  })
+  
+    return inputValues
   }
 
     setEventListeners(){
-    this._popup.addEventListener('click', (evt) => 
-    {if((evt.target.classList.contains('popup')) || (evt.target.classList.contains('popup__close'))){
-      this.closePopup()
-      
-    }})
+      super.setEventListeners()
   
   
-     this._formElement.addEventListener('submit', (evt) => this.handleFormSubmit(evt));
+     this._form.addEventListener('submit', (evt) => this.handleFormSubmit(evt));
   
   };
   
     closePopup(){
-      this._popup.classList.remove('popup_opened');
-      document.removeEventListener('keydown', this._handleEscClose);
-      this._getInputValues()[0].value = '';
-      this._getInputValues()[1].value = '';
+      super.closePopup()
+       
+      
     }
-  
 
 }

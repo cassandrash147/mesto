@@ -37,3 +37,6 @@ export const FormsForValidation = {
 
 
 export const popupPhoto = document.querySelector('.popup_type_photo');
+
+export const fullsizePhoto = document.querySelector('.popup_img');
+export     const fullsizePhotoTitle = document.querySelector('.popup_img-title');

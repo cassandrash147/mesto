@@ -15,40 +15,40 @@ const addPlace = document.querySelector('.lead__add');
 
 const editButtom = document.querySelector('.lead__edit');
 
+const bigPhoto = new  PopupWithImage('.popup_type_photo');
 
+function handleCardClick(image, title) {
+  bigPhoto.open(image, title);
+};
 
+function createCard(item, place, templete, handleCardClick) {
+  const card = new Card(item, place, templete, handleCardClick);
+        const cardElement = card.generateCard();
+        defaultCardList.addItem(cardElement);
+};
+
+bigPhoto.setEventListeners()
 
 const newProfile = new UserInfo('.lead__name', '.lead__proffesion');
 
 const newPlaceClass = new PopupWithForm('.popup_type_place', {handleFormSubmit: (evt) => {
-   
-  const newCard = new Card(newPlaceClass._getInputValues()[0].value, newPlaceClass._getInputValues()[1].value, '#element-template', {handleCardClick: () => {
-  new  PopupWithImage('.popup_type_photo').open()
-  }});
+  createCard(newPlaceClass._getInputValues().place, newPlaceClass._getInputValues().place_url, '#element-template', handleCardClick)
   
-  const generateCard =  newCard.generateCard();
-  placeContainer.prepend(generateCard);
-  newPlaceClass.closePopup()}});
+  newPlaceClass.closePopup()}
+});
+newPlaceClass.setEventListeners();
 
-const newProfileClass = new PopupWithForm('.popup_type_profile', {handleFormSubmit: (evt) => {
-  newProfile.changeUserInfo(newProfileClass._getInputValues())
+
+const newProfilePopup = new PopupWithForm('.popup_type_profile', {handleFormSubmit: (evt) => {
+  newProfile.changeUserInfo(newProfilePopup._getInputValues())
   
-  newProfileClass.closePopup()}})
+  newProfilePopup.closePopup()}
+})
+
+newProfilePopup.setEventListeners();
 
 const bindHandlers = () => {
-  // formElementPlace.addEventListener('submit', (evt) => {
-  //   evt.preventDefault(); 
-  //   const newCard = new Card(placeInput.value, urlInput.value, '#element-template', {handleCardClick: () => {
-  //     new  PopupWithImage('.popup_type_photo', defaultPhoto, defaultTitle).open()
-  //   }});
-  //   const generateCard =  newCard.generateCard();
-  //   placeContainer.prepend(generateCard);
-    
-    
-  //   new  PopupWithForm('.popup_type_place').open();
-  // });
-
-  addPlace.addEventListener('click', function() {
+    addPlace.addEventListener('click', function() {
     newPlaceClass.open()
     formNewPlaceValidator.removeTextErrors()
     formNewPlaceValidator.disableButton()
@@ -57,26 +57,16 @@ const bindHandlers = () => {
     editButtom.addEventListener('click', function() {
     formEditProfileValidator.removeTextErrors()
     
-    newProfile.setUserInfo(newProfileClass._getInputValues());
+    newProfile.setUserInfo(newProfilePopup.getInput());
     
     formEditProfileValidator.disableButton();
-    newProfileClass.open()
+    newProfilePopup.open()
     
   });
   
-  // formProfileElement.addEventListener('submit', submitProfileForm);
+  
   
 };
-
-// function submitProfileForm (evt) {
-//   evt.preventDefault(); 
-//   profileName.textContent = nameInput.value;
-//   profileProffesion.textContent = jobInput.value;
-//   new  PopupWithForm('.popup_type_place').close()
-// }
-
-
-
 
 const formNewPlaceValidator = new FormValidator(FormsForValidation,`.popup_type_place`);
 const formEditProfileValidator = new FormValidator(FormsForValidation,`.popup_type_profile`);
@@ -89,13 +79,9 @@ formEditProfileValidator.enableValidation();
 
 const defaultCardList = new Section({
   items: initialCards,
-  renderer: (item) => {
-    const card = new Card(item.name, item.link, '#element-template',{handleCardClick: (image, title) => {
-      
-      new  PopupWithImage('.popup_type_photo').open(image, title)
-      }});
-    const cardElement = card.generateCard();
-    defaultCardList.addItem(cardElement);
+  renderer: (item) => { 
+    createCard(item.name, item.link, '#element-template', handleCardClick)
+    
   }
 }, placeContainer);
 

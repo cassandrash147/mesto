@@ -7,19 +7,20 @@ export class UserInfo {
 
 
   getUserInfo(){
-    const UserInfo = { name: this._profileNameElement.textContent, proffesion: this.profileProffesionElement.textContent};
-    return UserInfo
+    
+    const userInfo = { name: this._profileNameElement.textContent, proffesion: this.profileProffesionElement.textContent};
+    return userInfo
   }
 
-  setUserInfo(InputValues){
-    
-    InputValues[0].value = this.getUserInfo().name;
-    InputValues[1].value = this.getUserInfo().proffesion;
-  }
-
-  changeUserInfo(InputValues){
-    
-    this._profileNameElement.textContent = InputValues[0].value;
-    this.profileProffesionElement.textContent = InputValues[1].value;
-  }
-}
+  setUserInfo(inputValues){ 
+     
+    inputValues.name.value = this.getUserInfo().name;
+    inputValues.about.value = this.getUserInfo().proffesion;
+  } 
+ 
+  changeUserInfo(inputValues){ 
+     
+    this._profileNameElement.textContent = inputValues.name; 
+    this.profileProffesionElement.textContent = inputValues.about; 
+  } 
+} 
