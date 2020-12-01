@@ -32,7 +32,7 @@ bigPhoto.setEventListeners()
 const newProfile = new UserInfo('.lead__name', '.lead__proffesion');
 
 const newPlaceClass = new PopupWithForm('.popup_type_place', {handleFormSubmit: (evt) => {
-  createCard(newPlaceClass._getInputValues().place, newPlaceClass._getInputValues().place_url, '#element-template', handleCardClick)
+  createCard(newPlaceClass.getInputValues().place, newPlaceClass.getInputValues().place_url, '#element-template', handleCardClick)
   
   newPlaceClass.closePopup()}
 });
@@ -40,7 +40,7 @@ newPlaceClass.setEventListeners();
 
 
 const newProfilePopup = new PopupWithForm('.popup_type_profile', {handleFormSubmit: (evt) => {
-  newProfile.changeUserInfo(newProfilePopup._getInputValues())
+  newProfile.changeUserInfo(newProfilePopup.getInputValues())
   
   newProfilePopup.closePopup()}
 })

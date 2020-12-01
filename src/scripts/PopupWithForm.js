@@ -24,7 +24,7 @@ export class PopupWithForm extends Popup {
   }
 
 
-  _getInputValues(){
+  getInputValues(){
     
     
     const inputValues = {};
