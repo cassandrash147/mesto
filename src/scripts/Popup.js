@@ -29,8 +29,9 @@ export class Popup {
     // обавляет слушатель клика иконке закрытия попапа.
     
     this._popup.addEventListener('click', (evt) => 
-    {if((evt.target.classList.contains('popup')) || (evt.target.classList.contains('popup__close'))){
+    {
       
+      if((evt.target.classList.contains('popup')) || (evt.target.classList.contains('popup__close'))){
       this.closePopup()
     }}
       

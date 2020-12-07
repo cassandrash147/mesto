@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+
+  <!-- Скрыто для NPM -->
+  <!-- <link rel="stylesheet" href="pages/index.css"> -->
+  
   <title>Mesto</title>
   
   
@@ -11,6 +14,7 @@
    
 </head>
 <body class="body">
+  
   <div class="page">
     <div class="content">
       <header class="header">
@@ -21,13 +25,13 @@
           <section class="lead">
             <div class="lead__profile">
               
-              <div class="lead__avatar"></div>
+              <div class="lead__avatar" ><div  class="lead__avatar-cover" ></div></div>
               <div class="lead__title">
                 <div class="lead__info">
-                  <h1 class="lead__name">Жак-Ив Кусто</h1>
+                  <h1 class="lead__name"></h1>
                   <button type="button" class="lead__edit"></button>
                 </div>
-                <p class="lead__proffesion">Исследователь океана</p>
+                <p class="lead__proffesion"></p>
               </div>
                     
             </div>
@@ -48,13 +52,16 @@
   <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <template id="element-template">
+    <template class="element-template">
       <article class="element">
           <img class="element__photo" alt="" src=""> 
           
-          <button type="button" class="element__delete"></button>
+          <button type="button" class="element__delete element__delete-nodisplay"></button>
           <div class="element__about"><h2 class="element__title"></h2>
-          <button type="button" class="element__heart"></button>
+          <div class="element__heart-block">
+            <button type="button" class="element__heart"></button>
+            <span class="element__heart-counter">0</span>
+          </div>
         </div>
       </article>
     </template>
@@ -73,14 +80,35 @@
       </form>
     </div>
 
+    <div class="popup popup_type_avatar">
+      <form class="popup__container popup__container_type_avatar" name="avatar">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <fieldset class="popup__form">
+          <input type="url" id="avatar" class="popup__input popup__input_type_avatar" placeholder="Ссылка на аватар" name="avatar" required minlength="0"> 
+          <span id="avatar-error" class="popup__error"></span>
+        </fieldset>
+        <button type="submit" class="popup__save">Сохранить</button >  
+        <button type="button" class="popup__close"></button >  
+      </form>
+    </div>
+
+    <div class="popup popup_type_agreement">
+      <form class="popup__container popup__container_type_agreement" name="agreement">
+        <h2 class="popup__title">Вы уверены?</h2>
+        
+        <button type="submit" class="popup__save">Да</button >  
+        <button type="button" class="popup__close"></button >  
+      </form>
+    </div>
+
     <div class="popup popup_type_place">
       <form class="popup__container popup__container_type_place" name="place">
         <h2 class="popup__title">Новое место</h2>
         <fieldset class="popup__form">
           <input autocomplete="off" type="text" id="place" class="popup__input popup__input_type_place" placeholder="Название" name="name" required minlength="2" maxlength="30">
           <span id="place-error" class="popup__error"></span>
-          <input type="url" id="place_url" class="popup__input popup__input_type_image" placeholder="Ссылка на картинку" name="proffesion" required minlength="0"> 
-          <span id="place_url-error" class="popup__error"></span>
+          <input type="url" id="link" class="popup__input popup__input_type_image" placeholder="Ссылка на картинку" name="link" required minlength="0"> 
+          <span id="link-error" class="popup__error"></span>
         </fieldset>
         <button type="submit" class="popup__save">Создать</button >  
         <button type="button" class="popup__close"></button >  
@@ -95,13 +123,14 @@
       </figure>
     </div>
 
-
+    
     
           
     
 
   </div>
-  
-  
+
+  <!-- Скрыто для NPM -->
+  <!-- <script src="./scripts/index.js" type="module"></script>    -->
 </body>
 </html>

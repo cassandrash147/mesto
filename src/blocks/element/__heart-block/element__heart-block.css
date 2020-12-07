@@ -1,0 +1,7 @@
+.element__heart-block{
+  display: flex;
+  flex-direction: column;
+ 
+  justify-content: space-between;
+  
+}

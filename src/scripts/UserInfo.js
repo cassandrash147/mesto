@@ -1,26 +1,25 @@
 export class UserInfo {
-  constructor(profileNameElement, profileProffesionElement) {
+  constructor({profileNameElement, profileProffesionElement}) {
     this._profileNameElement = document.querySelector(profileNameElement);  
-    this.profileProffesionElement = document.querySelector(profileProffesionElement);
+    this._profileProffesionElement = document.querySelector(profileProffesionElement);
     
+   
   }
-
 
   getUserInfo(){
-    
-    const userInfo = { name: this._profileNameElement.textContent, proffesion: this.profileProffesionElement.textContent};
-    return userInfo
+
+    const userInfo = {};
+    userInfo.name = this._profileNameElement.textContent;
+    userInfo.proffesion =  this._profileProffesionElement.textContent;
+
+    return userInfo;
   }
 
-  setUserInfo(inputValues){ 
+  setUserInfo(userName, userProffesion){ 
      
-    inputValues.name.value = this.getUserInfo().name;
-    inputValues.about.value = this.getUserInfo().proffesion;
+    this._profileNameElement.textContent = userName;  
+    this._profileProffesionElement.textContent = userProffesion;
   } 
  
-  changeUserInfo(inputValues){ 
-     
-    this._profileNameElement.textContent = inputValues.name; 
-    this.profileProffesionElement.textContent = inputValues.about; 
-  } 
+    
 } 

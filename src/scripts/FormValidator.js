@@ -12,12 +12,15 @@ export class FormValidator {
   }
 
   _hideError(form, input, inputErrorClass) {
+    
+
     const errorElement = form.querySelector(`#${input.id}-error`);
     errorElement.textContent = '';
     input.classList.remove(`${inputErrorClass}`)
   };
   
   _showError(form, input, inputErrorClass) {
+    
     const errorElement = form.querySelector(`#${input.id}-error`);
     errorElement.textContent = input.validationMessage;
     input.classList.add(`${inputErrorClass}`)
@@ -31,11 +34,18 @@ export class FormValidator {
     }
     };
 
-    disableButton() {
+  disableButton() {
   
       this._buttonElement.classList.add(`${this._inactiveButtonClass}`);
       this._buttonElement.disabled = true;
       
+  };
+
+  enableButton() {
+  
+    this._buttonElement.classList.remove(`${this._inactiveButtonClass}`);
+    this._buttonElement.disabled = false;
+    
   };
 
   
@@ -94,6 +104,16 @@ export class FormValidator {
     }); 
   };   
  
+  waitApiStart(message) {
+    this.disableButton();
+    this._buttonElement.value = message;
+  }
+
+  waitApiFinish(message) {
+    this.enableButton();
+    this._buttonElement.value = message;
+  }
+
 }   
 
 

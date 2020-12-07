@@ -8,13 +8,13 @@ export class PopupWithImage extends Popup {
     this._handleEscClose = this._handleEscClose.bind(this)
     
   }
-
-  open(image, title){
+  
+  open(data){
     
     
-    fullsizePhotoTitle.textContent = title;
-    fullsizePhoto.src = image;
-    fullsizePhoto.alt = title;
+    fullsizePhotoTitle.textContent = data.title;
+    fullsizePhoto.src = data.src;
+    fullsizePhoto.alt =  data.alt;
     super.open()
     
   }

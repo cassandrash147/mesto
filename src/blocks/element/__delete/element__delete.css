@@ -24,3 +24,11 @@
 
 
 }
+
+.element__delete-nodisplay{
+  display: none;
+}
+
+.element__delete-display{
+  display: block;
+}

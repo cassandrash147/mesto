@@ -4,9 +4,8 @@
   height: 282px;
   transition: opacity 0.2s linear;
   
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  
+  object-fit: cover;
   background-clip: border-box;
   
 }
