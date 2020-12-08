@@ -9,12 +9,13 @@ export class PopupWithImage extends Popup {
     
   }
   
-  open(data){
+  open(cardId, element){
     
-    
-    fullsizePhotoTitle.textContent = data.title;
-    fullsizePhoto.src = data.src;
-    fullsizePhoto.alt =  data.alt;
+    const smallPhoto = element.querySelector('.element__photo')
+    const smallPhotoTitle = element.querySelector('.element__title').textContent;
+    fullsizePhotoTitle.textContent = smallPhotoTitle;
+    fullsizePhoto.src = smallPhoto.src;
+    fullsizePhoto.alt = smallPhotoTitle;
     super.open()
     
   }

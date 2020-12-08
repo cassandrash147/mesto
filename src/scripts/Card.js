@@ -21,8 +21,8 @@ export class Card {
   _setEventListenerDeleteButton() {
     const deleteButton = this._element.querySelector('.element__delete')
     deleteButton.classList.remove('element__delete-nodisplay');
-    deleteButton.addEventListener('click', (event) => {
-    this._handleDeleteClick(event);
+    deleteButton.addEventListener('click', () => {
+    this._handleDeleteClick();
     })
   }
   
@@ -33,9 +33,10 @@ export class Card {
     this._element.querySelector('.element__photo').addEventListener('click',  event => {
       
       const data = {};
+      const name = event.target.closest('.element').querySelector('.element__title').textContent;
       data.src = event.target.src;
-      data.title = event.target.closest('.element').querySelector('.element__title').textContent;
-      data.alt = event.target.closest('.element').querySelector('.element__title').textContent;
+      data.title = name;
+      data.alt = name
       this._handleCardClick(data);
     })
   };
@@ -68,6 +69,22 @@ export class Card {
     this._setEventListeners();
     return this._element;
   }
+
+  _like(res){
+    
+    this._element.querySelector('.element__heart').classList.toggle('element__heart_active');
+    this._element.querySelector('.element__heart-counter').innerText = res.likes.length;
+    
+  }
+
+  _openPopup(popup) {
+    popup.open(this._cardId, this._element);
+  };
+
+  deleteCard() {
+    this._element.remove();
+    this._element = null
+  };
 
   
 }

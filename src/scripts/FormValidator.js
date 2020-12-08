@@ -52,8 +52,7 @@ export class FormValidator {
     _toggleButtonState(form) {
   
     if(form.checkValidity()){
-      this._buttonElement.classList.remove(`${this._inactiveButtonClass}`);
-      this._buttonElement.disabled = false;
+      this.enableButton()
         
       }else{
       

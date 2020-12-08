@@ -6,6 +6,15 @@ export class Api {
     
   }
 
+  _getResponseData(res) {
+    
+      if (res.ok) {
+      return res.json()
+      }else{
+      return Promise.reject(`Ошибка связи с с свервером: ${res.status}, ${res.statusText}`)};
+    ;
+} 
+
   getInitialCards() {
    
     return fetch(`${this._url}/cards`,
@@ -15,10 +24,7 @@ export class Api {
           
         }
       })
-      .then((res) => {
-        if (res.ok) {return res.json();}
-        return Promise.reject(`Карточки не загружены! Ошибка: ${res.status}, ${res.statusText}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 
   addCard(name, link) {
@@ -35,10 +41,7 @@ export class Api {
           link: `${link}`
         })
       })
-      .then((res) => {
-        if (res.ok) {return res.json();}
-        return Promise.reject(`Карточка не сохранена! Ошибка: ${res.status}, ${res.statusText}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 
   deleteCard(cardId) {
@@ -49,10 +52,7 @@ export class Api {
           authorization: this._token
         }
       })
-      .then((res) => {
-        if (res.ok)  {return res.json();}
-        return Promise.reject(`Карточка не удалена! Ошибка: ${res.status}, ${res.statusText}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 
   getUser() {
@@ -62,10 +62,7 @@ export class Api {
           authorization: this._token,
         }
       })
-      .then((res) => {
-        if (res.ok) {return res.json();}
-        return Promise.reject(`Профиль не загружен с сервера! Ошибка: ${res.status}, ${res.statusText}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 
    editProfile(name, proffession) {
@@ -81,10 +78,7 @@ export class Api {
           about: `${proffession}`
         })
       })
-      .then((res) => {
-        if (res.ok) {return res.json();}
-        return Promise.reject(`Профиль не сохранен! Ошибка: ${res.status}, ${res.statusText}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
  
   editAvatar(avatar) {
@@ -99,11 +93,7 @@ export class Api {
           avatar: `${avatar}`
         })
       })
-      .then((res) => {
-        if (res.ok) {return res.json();}
-        
-        return Promise.reject(`Аватар не сохранен! Ошибка: ${res.status}, ${res.statusText}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 
   like(cardId) {
@@ -114,10 +104,7 @@ export class Api {
           authorization: this._token
         }
       })
-      .then((res) => {
-        if (res.ok) {return res.json();}
-        return Promise.reject(`Лайк не поставлен! Ошибка: ${res.status}, ${res.statusText}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 
   disLike(cardId) {
@@ -128,10 +115,6 @@ export class Api {
           authorization: this._token
         }
       })
-      .then((res) => {
-        if (res.ok) {return res.json();}
-        return Promise.reject(`лайк не удален! Ошибка: ${res.status}, ${res.statusText}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 }
-

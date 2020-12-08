@@ -6,7 +6,7 @@ const api = new Api({
 
 // Импорт для NPM
 
-import '../pages/index.css';
+// import '../pages/index.css';
 
 
 // Импорты
@@ -35,27 +35,9 @@ import {placeContainer,
 
 // Создание попапов и их слушатели
 
-const deletePopup = new PopupWithSubmit('.popup_type_agreement', 
-{handleDeleteCard: () =>{
-  const cardId = deletePopup.getCardId();
-      api.deleteCard(cardId)
-        .then((res) => {
-          chosenCard.closest('.element').remove();
-        })
-        .catch((err) => {
-          console.error(
-            err
-          );
-        })
-        .finally(() => {
-          deletePopup.closePopup();
-          
-        });
-    }
-  
+const deletePopup = new PopupWithSubmit('.popup_type_agreement'); 
 
-});
-deletePopup.setEventListeners()
+deletePopup.setEventListeners();
 
 const bigPhoto = new PopupWithImage('.popup_type_photo');
 bigPhoto.setEventListeners()
@@ -110,7 +92,7 @@ avatarPopup.setEventListeners();
 
 // Валидаторы
 
-const formAvatarValidator = new FormValidator(FormsForValidation,`.popup_type_place`);
+const formAvatarValidator = new FormValidator(FormsForValidation,`.popup_type_avatar`);
 const formNewPlaceValidator = new FormValidator(FormsForValidation,`.popup_type_place`);
 const formEditProfileValidator = new FormValidator(FormsForValidation,`.popup_type_profile`);
 
@@ -121,17 +103,19 @@ formAvatarValidator.enableValidation();
 // Профиль
 const newUserInfo =  new UserInfo(
   {profileNameElement: '.lead__name', 
-  profileProffesionElement: '.lead__proffesion'
+  profileProffesionElement: '.lead__proffesion',
+  profileAvatarElement: '.lead__avatar'
 })
 
 // Загружаем промис с сервера
 Promise.all([api.getUser(), api.getInitialCards()])
    .then(([getUser, getInitialCards]) => {
-    userName.textContent = getUser.name;
-    userProffession.textContent = getUser.about;
-    userAvatar.style.backgroundImage = `url(${getUser.avatar})`;
+  
+  userName.textContent = newUserInfo.setUserInfo(getUser).name;
+  userProffession.textContent = newUserInfo.setUserInfo(getUser).proffesion;
+  userAvatar.style.backgroundImage = newUserInfo.setUserInfo(getUser).avatar;
      defaultCardList.renderItems(getInitialCards, getUser._id);
-     createCard(getUser._id);
+     initializePopupCardLogic(getUser._id);
    })
    .catch((err) => {
      console.error(err);
@@ -143,29 +127,40 @@ let chosenCard;
 
 const newCard = (item, userId) => {
   
-  return new Card(
+  const nCard = new Card(
     item,
     userId,
     '.element-template',
     {handleCardClick: (data) => {
-        bigPhoto.open(data);
+        nCard._openPopup(bigPhoto)
     }},
-    {handleDeleteClick: (event) => {
-        chosenCard =  event.target;
-        deletePopup.open(item._id, event);
+    {handleDeleteClick: (cardId) => {
+      
+      deletePopup.setSubmitAction(() => {
+        cardId = deletePopup.getCardId()
         
-      }
-    },
+
+          api.deleteCard(cardId)
+             .then(res => nCard.deleteCard())
+             .catch(err => console.error(err))
+        })
+        nCard._openPopup(deletePopup) 
+      }  
+           
+    }
+        
+      
+  
+
+     
+        
+,
     {handleLikeClick: (event) =>
       {
         if (event.target.classList.contains('element__heart_active'))
         {
           api.disLike(item._id)
-          .then((res) => {
-            event.target.classList.toggle('element__heart_active');
-            const cardLikesCounter = event.target.closest('.element__heart-block').querySelector('.element__heart-counter');
-            cardLikesCounter.innerText = res.likes.length;
-          })
+          .then((res) => nCard._like(res))
           .catch((err) => {
             console.error(
               err
@@ -173,11 +168,7 @@ const newCard = (item, userId) => {
           });
         }else{
           api.like(item._id)
-          .then((res) => {
-            event.target.classList.toggle('element__heart_active');
-            const cardLikesCounter = event.target.closest('.element__heart-block').querySelector('.element__heart-counter');
-            cardLikesCounter.innerText = res.likes.length; 
-          })
+          .then((res) => nCard._like(res))
           .catch((err) => {
             console.error(
               err
@@ -188,6 +179,7 @@ const newCard = (item, userId) => {
     }
     
   )
+  return nCard
 };
 
 const defaultCardList = new Section({
@@ -202,10 +194,10 @@ const defaultCardList = new Section({
 
 
 
-function createCard(userId) {
+function initializePopupCardLogic(userId) {
   const newPlacePopup = new PopupWithForm('.popup_type_place', {handleFormSubmit: (item, userId) => {
     
-    formEditProfileValidator.waitApiStart(waitApiSubmitValue);
+   formNewPlaceValidator.waitApiStart(waitApiSubmitValue);
     
     api.addCard(item.name, item.link)
     .then((res) => {
