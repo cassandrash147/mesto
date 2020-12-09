@@ -6,7 +6,7 @@ const api = new Api({
 
 // Импорт для NPM
 
-// import '../pages/index.css';
+import '../pages/index.css';
 
 
 // Импорты
