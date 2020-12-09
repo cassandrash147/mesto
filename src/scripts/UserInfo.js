@@ -15,14 +15,11 @@ export class UserInfo {
     return userInfo;
   }
 
-  setUserInfo(getUser){ 
-    
-    const userNewInfo = {};
-    userNewInfo.name = getUser.name;  
-    userNewInfo.proffesion = getUser.about;
-    userNewInfo.avatar = `url(${getUser.avatar})`
-    return userNewInfo;
-  } 
+  setUserInfo(userData){  
+    this._profileNameElement.textContent = userData.name;   
+    this._profileProffesionElement.textContent = userData.about; 
+    this._profileAvatarElement.style.backgroundImage = `url(${userData.avatar})`;
+}    
  
     
 } 

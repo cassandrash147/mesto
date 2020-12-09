@@ -48,9 +48,9 @@ const profilePopup = new PopupWithForm('.popup_type_profile', {handleFormSubmit:
   
   formEditProfileValidator.waitApiStart(waitApiSubmitValue);
   api.editProfile(item.name, item.proffesion)
-  .then(() => {
+  .then((res) => {
     
-    newUserInfo.setUserInfo(item.name, item.proffesion);
+    newUserInfo.setUserInfo(res);
     profilePopup.closePopup();
   })
   .catch((err) => {
@@ -111,9 +111,7 @@ const newUserInfo =  new UserInfo(
 Promise.all([api.getUser(), api.getInitialCards()])
    .then(([getUser, getInitialCards]) => {
   
-  userName.textContent = newUserInfo.setUserInfo(getUser).name;
-  userProffession.textContent = newUserInfo.setUserInfo(getUser).proffesion;
-  userAvatar.style.backgroundImage = newUserInfo.setUserInfo(getUser).avatar;
+    newUserInfo.setUserInfo(getUser)
      defaultCardList.renderItems(getInitialCards, getUser._id);
      initializePopupCardLogic(getUser._id);
    })
@@ -123,8 +121,6 @@ Promise.all([api.getUser(), api.getInitialCards()])
 
 // Карточки
 
-let chosenCard;
-
 const newCard = (item, userId) => {
   
   const nCard = new Card(
@@ -132,35 +128,31 @@ const newCard = (item, userId) => {
     userId,
     '.element-template',
     {handleCardClick: (data) => {
-        nCard._openPopup(bigPhoto)
+        nCard.openPopup(bigPhoto)
     }},
     {handleDeleteClick: (cardId) => {
       
+      
       deletePopup.setSubmitAction(() => {
         cardId = deletePopup.getCardId()
-        
-
           api.deleteCard(cardId)
-             .then(res => nCard.deleteCard())
+             .then(res => {nCard.deleteCard();
+              deletePopup.closePopup()})
              .catch(err => console.error(err))
-        })
-        nCard._openPopup(deletePopup) 
+        }
+        
+        )
+        nCard.openPopup(deletePopup) 
       }  
            
     }
-        
-      
-  
-
-     
-        
 ,
     {handleLikeClick: (event) =>
       {
         if (event.target.classList.contains('element__heart_active'))
         {
           api.disLike(item._id)
-          .then((res) => nCard._like(res))
+          .then((res) => nCard.like(res))
           .catch((err) => {
             console.error(
               err
@@ -168,7 +160,7 @@ const newCard = (item, userId) => {
           });
         }else{
           api.like(item._id)
-          .then((res) => nCard._like(res))
+          .then((res) => nCard.like(res))
           .catch((err) => {
             console.error(
               err
@@ -198,14 +190,15 @@ function initializePopupCardLogic(userId) {
   const newPlacePopup = new PopupWithForm('.popup_type_place', {handleFormSubmit: (item, userId) => {
     
    formNewPlaceValidator.waitApiStart(waitApiSubmitValue);
-    
-    api.addCard(item.name, item.link)
-    .then((res) => {
+   
+   api.addCard(item.name, item.link)
+   .then((res) => {
       item.owner = {
       "_id": userId
       };
       item._id = res._id;
-      
+      item.likes = [];
+      console.log(item)
       const card = newCard(item, userId);
       defaultCardList.addItemPrepend(card.generateCard());
       newPlacePopup.closePopup();

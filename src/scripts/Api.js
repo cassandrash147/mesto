@@ -4,6 +4,7 @@ export class Api {
     this._url = url;
     this._token = token;
     
+    
   }
 
   _getResponseData(res) {
@@ -38,10 +39,12 @@ export class Api {
         },
         body: JSON.stringify({
           name: `${name}`,
-          link: `${link}`
+          link: `${link}`,
+          likes: 0
         })
       })
-      .then((res) => this._getResponseData(res));
+      .then((res) => this._getResponseData(res))
+      
   }
 
   deleteCard(cardId) {

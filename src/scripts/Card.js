@@ -49,35 +49,38 @@ export class Card {
     const elementPhoto = this._element.querySelector('.element__photo');
     const elementTitle = this._element.querySelector('.element__title');
     const likeCounter = this._element.querySelector('.element__heart-counter');
-
+   
     elementPhoto.src = this._image;
     elementTitle.textContent = this._title;
-    
+   
 
     if(this._userId === this._cardOwnerId){
       this._setEventListenerDeleteButton()
     }
+
+    
+    likeCounter.textContent = (this._likes.length > 0) ? this._likes.length : 0;
     
     this._liked = this._likes ? this._likes.some((like) => like._id === this._userId) : false;
 
     if (this._liked) {
       const cardIsLiked= this._element.querySelector('.element__heart');
       cardIsLiked.classList.toggle('element__heart_active');
-      likeCounter.textContent = this._likes.length;
     }
     
     this._setEventListeners();
     return this._element;
   }
 
-  _like(res){
+  like(res){
     
     this._element.querySelector('.element__heart').classList.toggle('element__heart_active');
     this._element.querySelector('.element__heart-counter').innerText = res.likes.length;
     
+   
   }
 
-  _openPopup(popup) {
+  openPopup(popup) {
     popup.open(this._cardId, this._element);
   };
 
